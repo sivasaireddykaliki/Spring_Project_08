@@ -37,6 +37,8 @@ public class DemoSecurityConfig {
         http.authorizeHttpRequests(
                 auth -> auth
                         .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/excel").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/open-api/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
                         .requestMatchers(HttpMethod.GET,"/api/book/**").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
                         .requestMatchers(HttpMethod.POST,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name())
