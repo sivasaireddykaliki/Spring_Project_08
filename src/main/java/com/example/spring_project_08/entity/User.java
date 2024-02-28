@@ -11,7 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 
-@Table(name="user")
+@Table(name="user",
+uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
