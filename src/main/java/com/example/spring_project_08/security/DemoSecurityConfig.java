@@ -1,6 +1,7 @@
 package com.example.spring_project_08.security;
 
 import com.example.spring_project_08.config.JwtAuthenticationFilter;
+import com.example.spring_project_08.entity.Permission;
 import com.example.spring_project_08.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -37,11 +38,16 @@ public class DemoSecurityConfig {
         http.authorizeHttpRequests(
                 auth -> auth
                         .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/excel").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/open-api/**").hasAnyRole(Role.ALBUM.name())
+                        .requestMatchers(HttpMethod.GET,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
+                        .requestMatchers(HttpMethod.PUT,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
+                        .requestMatchers(HttpMethod.DELETE,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
                         .requestMatchers(HttpMethod.GET,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
                         .requestMatchers(HttpMethod.GET,"/api/book/**").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
                         .requestMatchers(HttpMethod.POST,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name())
-                        .requestMatchers(HttpMethod.PUT,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.DELETE,"/api/books/**").hasAnyRole(Role.MANAGER.name())
+                        .requestMatchers(HttpMethod.PUT,"/api/books/**").hasAnyRole(Role.MANAGER.name(),Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.DELETE,"/api/books/**").hasAnyAuthority(Permission.ADMIN_DELETE.name())
                         .anyRequest().authenticated()
         );
 
