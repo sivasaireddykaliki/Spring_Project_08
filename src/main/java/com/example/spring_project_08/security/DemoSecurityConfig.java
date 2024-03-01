@@ -39,19 +39,17 @@ public class DemoSecurityConfig {
                 auth -> auth
                         
                         .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/excel").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/open-api/**").hasAnyRole(Role.ALBUM.name())
-                        .requestMatchers(HttpMethod.GET,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
-                        .requestMatchers(HttpMethod.PUT,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
-                        .requestMatchers(HttpMethod.DELETE,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
-                        .requestMatchers(HttpMethod.GET,"/api/book/**").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
-                        .requestMatchers(HttpMethod.GET,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
-                        .requestMatchers(HttpMethod.POST,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name())
+                       // .requestMatchers(HttpMethod.GET,"/excel").permitAll()
+                        //.requestMatchers(HttpMethod.GET,"/open-api/**").hasAnyRole(Role.ALBUM.name())
+                        //.requestMatchers(HttpMethod.GET,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
+                        //.requestMatchers(HttpMethod.PUT,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
+                        //.requestMatchers(HttpMethod.DELETE,"/api/manager/**").hasAnyRole(Role.MANAGER.name())
+                        //.requestMatchers(HttpMethod.GET,"/api/books/**").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name(),Role.ADMIN.name(),Role.EMPLOYEE.name())
+                        //.requestMatchers(HttpMethod.POST,"/api/books").hasAnyRole(Role.MANAGER.name(),Role.PRINCIPAL.name())
                         // define role access for API without http method parameter then authority or permission access for API with http method constants
-                        .requestMatchers("/api/books/**").hasAnyRole(Role.MANAGER.name(),Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.PUT,"/api/books/**").hasAnyAuthority(Permission.ADMIN_UPDATE.name(),Permission.MANAGER_UPDATE.name())
-                        .requestMatchers(HttpMethod.DELETE,"/api/books/**").hasAnyAuthority(Permission.ADMIN_DELETE.name())
-                        .requestMatchers(HttpMethod.GET,"/api/v1/management/**").hasAnyAuthority(Permission.MANAGER_READ.name())
+                       // .requestMatchers("/api/books/**").hasAnyRole(Role.MANAGER.name(),Role.ADMIN.name())
+                       // .requestMatchers(HttpMethod.PUT,"/api/books/**").hasAnyAuthority(Permission.ADMIN_UPDATE.name(),Permission.MANAGER_UPDATE.name())
+                       // .requestMatchers(HttpMethod.DELETE,"/api/books/**").hasAnyAuthority(Permission.ADMIN_DELETE.name())
                         .anyRequest().authenticated()
         );
 

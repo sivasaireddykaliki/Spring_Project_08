@@ -29,7 +29,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBook(@PathVariable int id){
         Book book = bookService.getBookById(id);
         if(book == null)

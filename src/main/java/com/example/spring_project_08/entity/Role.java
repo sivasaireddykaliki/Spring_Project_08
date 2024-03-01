@@ -26,7 +26,6 @@ public enum Role {
     ),
     MANAGER(
             Set.of(
-                    Permission.MANAGER_READ,
                     Permission.MANAGER_CREATE,
                     Permission.MANAGER_UPDATE,
                     Permission.MANAGER_DELETE

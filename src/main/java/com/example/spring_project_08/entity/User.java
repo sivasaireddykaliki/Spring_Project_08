@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 
 @Table(name="user",
@@ -31,6 +32,10 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+   @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+
+    private List<Token> tokenList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
