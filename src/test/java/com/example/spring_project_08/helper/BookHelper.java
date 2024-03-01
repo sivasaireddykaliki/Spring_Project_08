@@ -17,15 +17,5 @@ public class BookHelper {
 
     }
 
-    public String getUrl(String id)
-    {
-        String url="http://localhost:8080/api/books/";
-        if(id==null)
-        {
-            return url;
-        }
-        else {
-            return url+id;
-        }
-    }
+
 }

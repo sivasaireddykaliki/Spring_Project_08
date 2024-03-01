@@ -3,6 +3,7 @@ package com.example.spring_project_08.service;
 import com.example.spring_project_08.entity.Book;
 import com.example.spring_project_08.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
